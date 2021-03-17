@@ -51,16 +51,19 @@ contract Pausable is Ownable {
   event Unpaused(address pauser);
 
 //  2) create a public setter using the inherited onlyOwner modifier 
-function setPaused(bool state) public onlyOwner {
-  _paused = state;
-  if (state) {
-    emit Paused(msg.sender);
-  } else {
-    emit Unpaused(msg.sender);
+  function setPaused(bool state) public onlyOwner {
+    _paused = state;
+    if (state) {
+      emit Paused(msg.sender);
+    } else {
+      emit Unpaused(msg.sender);
+    }
   }
-}
 
 //  3) create an internal constructor that sets the _paused variable to false
+  constructor() internal {
+    _paused = false;
+  }
 
 //  4) create 'whenNotPaused' & 'paused' modifier that throws in the appropriate situation
 
