@@ -46,10 +46,26 @@ contract Ownable {
 contract Pausable is Ownable {
 //  1) create a private '_paused' variable of type bool
   bool private _paused;
+
+  event Paused(address pauser);
+  event Unpaused(address pauser);
+
 //  2) create a public setter using the inherited onlyOwner modifier 
+function setPaused(bool state) public onlyOwner {
+  _paused = state;
+  if (state) {
+    emit Paused(msg.sender);
+  } else {
+    emit Unpaused(msg.sender);
+  }
+}
+
 //  3) create an internal constructor that sets the _paused variable to false
+
 //  4) create 'whenNotPaused' & 'paused' modifier that throws in the appropriate situation
+
 //  5) create a Paused & Unpaused event that emits the address that triggered the event
+
 }
 
 contract ERC165 {
