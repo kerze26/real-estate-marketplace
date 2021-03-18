@@ -167,7 +167,7 @@ contract ERC721 is Pausable, ERC165 {
 //    @dev Approves another address to transfer the given token ID
     function approve(address to, uint256 tokenId) public {
         
-        // TODO require the given address to not be the owner of the tokenId
+        // TODO require the given address to not be the owner ofauthori the tokenId
       require(ownerOf(tokenId) != to, "Address already owns this token");
         // TODO require the msg sender to be the owner of the contract or isApprovedForAll() to be true
       require((getOwner() == msg.sender) || isApprovedForAll(msg.sender, ownerOf(tokenId)), "Caller is not authorised");
@@ -179,6 +179,7 @@ contract ERC721 is Pausable, ERC165 {
 
     function getApproved(uint256 tokenId) public view returns (address) {
         // TODO return token approval if it exists
+      return _tokenApprovals[tokenId];
     }
 
     /**
