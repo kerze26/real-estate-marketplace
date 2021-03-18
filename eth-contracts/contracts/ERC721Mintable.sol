@@ -47,9 +47,6 @@ contract Pausable is Ownable {
 //  1) create a private '_paused' variable of type bool
   bool private _paused;
 
-  event Paused(address pauser);
-  event Unpaused(address pauser);
-
 //  2) create a public setter using the inherited onlyOwner modifier 
   function setPaused(bool state) public onlyOwner {
     _paused = state;
@@ -77,6 +74,8 @@ contract Pausable is Ownable {
   }
 
 //  5) create a Paused & Unpaused event that emits the address that triggered the event
+  event Paused(address pauser);
+  event Unpaused(address pauser);
 
 }
 
