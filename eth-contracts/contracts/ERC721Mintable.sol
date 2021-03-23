@@ -250,6 +250,8 @@ contract ERC721 is Pausable, ERC165 {
         require(to != address(0), "Address is invalid");
   
         // TODO mint tokenId to given address & increase token count of owner
+        _tokenOwner[tokenId] = to;
+        _ownedTokensCount[to].increment();
 
         // TODO emit Transfer event
     }
