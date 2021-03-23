@@ -268,6 +268,7 @@ contract ERC721 is Pausable, ERC165 {
         require(to != address(0), "Address is invalid");
         
         // TODO: clear approval
+        _clearApproval(tokenId);
 
         // TODO: update token counts & transfer ownership of the token ID 
 
